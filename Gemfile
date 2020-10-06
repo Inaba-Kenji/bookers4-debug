@@ -67,3 +67,5 @@ gem "refile-mini_magick"
 gem 'jquery-rails'
 
 gem 'bootstrap-sass'
+
+gem 'font-awesome-rails'
