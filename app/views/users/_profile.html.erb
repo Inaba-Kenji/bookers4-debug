@@ -10,8 +10,35 @@
 		<th>introduction</th>
 		<th><%= user.introduction %></th>
 	</tr>
+
+	<tr>
+		<th>follows</th>
+		<th>
+  		<%= link_to following_user_path(user) do %>
+       <%= user.followings.count %>
+      <% end %>
+    </th>
+	</tr>
+
+	<tr>
+		<th>follwers</th>
+		<th>
+  		<%= link_to followers_user_path(user) do %>
+        <%= user.followers.count %>
+      <% end %>
+    </th>
+	</tr>
+
 </table>
 
-<div class="row">
-	<%= link_to '', edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>
-</div>
+
+<% if current_user == user %>
+	<div class="row">
+		<%= link_to '', edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>
+	</div>
+<% else %>
+	<!--フォロー機能-->
+	<%= render 'relationships/follow_button', user: @user %>
+	<!--フォロー機能-->
+
+<% end %>

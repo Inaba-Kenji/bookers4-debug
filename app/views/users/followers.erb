@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-xs-12">
+		<h2>Followers Users</h2>
+
+		<table class="table table-hover table-inverse">
+			<thead>
+				<tr>
+					<th></th>
+					<th>image</th>
+					<th>name</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @user_followers.each do |user_follower| %>
+					<tr>
+						<td><%= attachment_image_tag(user_follower, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
+						<td><%= user_follower.name %></td>
+						<td><%= user_follower.followings.count %></td>
+						<td><%= user_follower.followers.count %></td>
+						<td><%= link_to "Show", user_path(@user), class: "user_#{@user.id}" %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>

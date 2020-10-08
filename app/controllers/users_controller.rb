@@ -26,6 +26,18 @@ class UsersController < ApplicationController
       end
   end
 
+# フォロー機能実装のため
+  def following
+    @user = User.find(params[:id])
+    @user_followings = @user.followings
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @user_followers = @user.followers
+  end
+# フォロー機能実装のため
+
   private
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
